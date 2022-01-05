@@ -1,76 +1,103 @@
 const router = require('express').Router();
-const {
-  Blogpost,
-  User,
-  Comments
-} = require('../models');
+const {  Blogpost,  User,  Comments} = require('../models');
 const withAuth = require('../utils/auth');
+
 
 
 router.get('/', async (req, res) => {
 
-  res.render('homepage', {
-    logged_in: req.session.logged_in,
-  });
-
-});
-
-
-router.get('/blogpost/:id', async (req, res) => {
   try {
-    const blogpostData = await Blogpost.findByPk(req.params.id, {
-      include: [{
-        model: User,
-
-      }, ],
-    });
-
-    const blogpost = blogpostData.get({
-      plain: true
-    });
-
-    res.render('blogpost', {
-      ...blogpost,
-      logged_in: req.session.logged_in
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-router.get('/blogpost', withAuth, async (req, res) => {
-  try {
-    // Find the logged in user based on the session ID
-    const blogpostData = await Blogpost.findByPk(1, {
-      include: [{
-        include: [{
-            model: User
-          },
-          {
-            model: Comments
-          }
-        ]
-
-      }]
-    });
-
-    const blogpost = blogpostData.get({
-      plain: true
-    });
-
-    console.log(blogpost)
-    res.render('blogpost', {
-      blogpost,
-      logged_in: true
-    });
+    const bpData = await Blogpost.findByPk(req.params.id);
+    console.log(bpData)
+    res.render('homepage', bpData);
   } catch (err) {
     res.status(500).json(err);
   }
 
 
-});
+//   res.render('homepage', {
+//     logged_in: req.session.logged_in,
+//   });
+// });
 
 
+// router.get('/', async (req, res) => {
 
+//   const blogpostData = await Blogpost.findAll(req.params.id, {
+//     include: [{
+//         model: User
+//       },
+//       {
+//         model: Comment
+//       }
+//     ],
+//   });
+
+//   const bp = blogpostData.get({
+//     plain: true
+//   });
+
+//   res.render('homepage', {
+//     bp,
+//     logged_in: req.session.logged_in,
+//   });
+
+// });
+
+
+// router.get('/blogpost/:id', async (req, res) => {
+//   try {
+//     const blogpostData = await Blogpost.findByPk(req.params.id, {
+//       include: [
+//         {
+//         model: User },
+//         { model: Comment }],
+//     });
+
+//     const blogpost = blogpostData.get({
+//       plain: true
+//     });
+
+//     res.render('blogpost', {
+//       ...blogpost,
+//       logged_in: req.session.logged_in
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
+
+// router.get('/blogpost', withAuth, async (req, res) => {
+//   try {
+//     // Find the logged in user based on the session ID
+//     const blogpostData = await Blogpost.findByPk(1, {
+//       include: [{
+//         include: [{
+//             model: User
+//           },
+//           {
+//             model: Comments
+//           }
+//         ]
+
+//       }]
+//     });
+
+//     const blogpost = blogpostData.get({
+//       plain: true
+//     });
+
+//     console.log(blogpost)
+//     res.render('blogpost', {
+//       blogpost,
+//       logged_in: true
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+
+
+// });
 
 // Use withAuth middleware to prevent access to route
 router.get('/profile', withAuth, async (req, res) => {
