@@ -16,14 +16,15 @@ router.get('/', async (req, res) => {
 router.get('/blogpost', async (req, res) => {
   try {
   // Search the database for a dish with an id that matches params
-  const blogpostData = await Blogpost.findByPK(req.params.id); 
+  const blogpostData = await Blogpost.findAll(req.params.id); 
+  console.log(blogpostData);
   // We use .get({ plain: true }) on the object to serialize it so that it only includes the data that we need. 
-  const blogpost = blogpostData.get({ plain: true });
-  // Then, the 'dish' template is rendered and dish is passed into the template.
+  const blogposts = blogpostData.map((blogpost) => blogpost.get({ plain: true }));
+  // Then, the 'blogpost' template is rendered and dish is passed into the template.
   console.log("");
   console.log("");
-  console.log(blogpost);
-  res.render('blogpost', blogpost);
+  console.log(blogposts);
+  res.render('blogpost', {blogposts});
   } catch (err) {
       res.status(500).json(err);
   }
