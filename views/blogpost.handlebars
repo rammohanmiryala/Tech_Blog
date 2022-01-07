@@ -1,20 +1,23 @@
-<h1>rammohanmaaain</h1>
+<h1>blogpots ram</h1>
 
-{{#each blogpost as |Techblogpost|}}
-  <!-- For each dish in the array of dish objects, the following <div> will be rendered. -->
-    <div class="dish col-md-5">
-      <!-- We use dish.id instead of <od> and <li> elements. -->
-      <p>
-        {{blogpost.title}}.
-        
-      </p>
-    </div>
-    <div class="col-md-7">
-      <p>
-        {{blogpost.description}}
-        <!-- guest_name will eventually go here -->
-      </p>
-    </div>
-    <!-- Below, we close the #each helper. -->
-  {{/each}}
+{{#each blogpost as |techpost|}}
+<div>
+  <p>
+    {{techpost.id}}.
+    {{techpost.title}}.
+
+  </p>
 </div>
+<div>
+  <p>
+    {{techpost.description}}
+    <!-- guest_name will eventually go here -->
+  </p>
+  <p>
+    {{techpost.date_created}}
+    <!-- guest_name will eventually go here -->
+  </p>
+</div>
+<!-- Below, we close the #each helper. -->
+
+{{/each}}

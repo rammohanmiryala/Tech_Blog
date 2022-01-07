@@ -6,18 +6,11 @@ const {
 } = require('../models');
 const withAuth = require('../utils/auth');
 
+
 router.get('/', async (req, res) => {
-  res.render('blogpost', {
-    // logged_in: req.session.logged_in,
-  });
-});
-
-
-router.get('/blogpost', async (req, res) => {
   try {
   // Search the database for a dish with an id that matches params
   const blogpostData = await Blogpost.findAll(req.params.id); 
-  console.log(blogpostData);
   // We use .get({ plain: true }) on the object to serialize it so that it only includes the data that we need. 
   const blogposts = blogpostData.map((blogpost) => blogpost.get({ plain: true }));
   // Then, the 'blogpost' template is rendered and dish is passed into the template.
