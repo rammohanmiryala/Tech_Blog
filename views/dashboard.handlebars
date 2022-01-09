@@ -1,0 +1,36 @@
+<h1>dashboard</h1>
+<form class ="new-post-form">
+  <div class="form-group">
+    <label for="exampleInputtextarea1">Title</label>
+    <input type="text" class="form-control" id="title" placeholder="mvc">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputtextarea2">content</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" id="description" rows="3"></textarea>
+  </div>
+    <button type="submit" class="btn btn-primary mb-2">Submit</button>
+</form>
+
+{{#each techpost as |blogpost|}}
+<div>
+  <p>
+    {{blogpost.id}}.
+    {{blogpost.title}}.
+
+  </p>
+</div>
+<div>
+  <p>
+    {{blogpost.description}}
+    <!-- guest_name will eventually go here -->
+  </p>
+  <p>
+    {{blogpost.date_created}}
+    <!-- guest_name will eventually go here -->
+  </p>
+</div>
+<!-- Below, we close the #each helper. -->
+
+{{/each}}
+
+<script src="../public/js/addpost.js"></script>
