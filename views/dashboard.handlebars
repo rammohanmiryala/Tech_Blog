@@ -1,20 +1,21 @@
 <h1>dashboard</h1>
-<form class ="new-post-form">
+<form class="new-post-form">
   <div class="form-group">
     <label for="exampleInputtextarea1">Title</label>
     <input type="text" class="form-control" id="title" placeholder="mvc">
   </div>
   <div class="form-group">
     <label for="exampleInputtextarea2">content</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" id="description" rows="3"></textarea>
+    <textarea class="form-control" id="description" rows="3"></textarea>
   </div>
-    <button type="submit" class="btn btn-primary mb-2">Submit</button>
+  <button type="submit" class="btn btn-primary mb-2">Submit</button>
 </form>
 
 {{#each techpost as |blogpost|}}
-<div>
+<div class="">
+  <h1>{{blogpost.id}}.</h1>
   <p>
-    {{blogpost.id}}.
+
     {{blogpost.title}}.
 
   </p>
@@ -25,12 +26,17 @@
     <!-- guest_name will eventually go here -->
   </p>
   <p>
-    {{blogpost.date_created}}
+    {{format_date blogpost.date_created}}
     <!-- guest_name will eventually go here -->
   </p>
+
 </div>
 <!-- Below, we close the #each helper. -->
+<div class =>
+  <button type="delete" class="btn btn-danger mb-2 " post_id='{{ blogpost.blogpost_id}}'>Delete</button>
+</div>
+
 
 {{/each}}
 
-<script src="../public/js/addpost.js"></script>
+<script src="./js/addpost.js"></script>
