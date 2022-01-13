@@ -34,7 +34,8 @@ router.get('/dashboard',withAuth, async (req, res) => {
   console.log("");
   console.log(blogposts);
   res.render('dashboard', {techpost:blogposts,
-    logged_in: req.session.logged_in});
+    logged_in: req.session.logged_in
+  });
   } catch (err) {
       res.status(500).json(err);
   }
@@ -53,7 +54,7 @@ router.get('/login', (req, res) => {
 
 
 
-router.get('/profile', withAuth, async (req, res) => {
+router.get('/profile', async (req, res) => {
   try {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {

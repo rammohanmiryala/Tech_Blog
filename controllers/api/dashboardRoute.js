@@ -8,7 +8,7 @@ router.post('/dashboard', async (req, res) => {
     const blogpostData = await Blogpost.create({
     title: req.body.title,
     description: req.body.description,
-    user_id: req.session.user_id
+    // user_id: req.session.user_id
   });
   // if the Blogpost is successfully created, the new response will be returned as json
   res.status(200).json(blogpostData)
