@@ -30,7 +30,6 @@ const newFormHandler = async (event) => {
 }
 
 const delButtonHandler = async (event) => {
-  console.log("I am inside the *delButtonHandler*")
   
   if (event.target.hasAttribute('post_id')) {
     const review_id = event.target.getAttribute('post_id');

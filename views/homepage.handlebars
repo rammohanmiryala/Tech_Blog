@@ -1,18 +1,28 @@
-{{#each blogpost as |Techblogpost|}}
-  <!-- For each dish in the array of dish objects, the following <div> will be rendered. -->
-    <div class="dish col-md-5">
-      <!-- We use dish.id instead of <od> and <li> elements. -->
-      <p>
-        {{blogpost.title}}.
-        
-      </p>
-    </div>
-    <div class="col-md-7">
-      <p>
+<h1>blogpots ram</h1>
+
+{{#each blogposts as |blogpost|}}
+<div class="container">
+  <a href="/blogpost/{{blogpost.id}}">
+    <div class="row blogpost">
+      <div class=" col title ">
+        {{blogpost.title}}
+      </div>
+      <div class=" col-lg-6 title ">
+      </div>
+      <div class=" col justify-content-end title">
+        {{ format_date blogpost.date_created}}
+        {{blogpost.user.fullname}}
+      </div>
+      <div class="col-12 description">
         {{blogpost.description}}
-        <!-- guest_name will eventually go here -->
-      </p>
+      </div>
     </div>
-    <!-- Below, we close the #each helper. -->
-  {{/each}}
+  </a>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Example textarea</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary mb-2">Submit</button>
 </div>
+{{/each}}
+<!-- Below, we close the #each helper. -->

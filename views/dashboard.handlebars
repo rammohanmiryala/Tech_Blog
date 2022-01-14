@@ -11,32 +11,22 @@
   <button type="submit" class="btn btn-primary mb-2">Submit</button>
 </form>
 
-{{#each techpost as |blogpost|}}
-<div class="">
-  <h1>{{blogpost.id}}.</h1>
-  <p>
+  {{#if blogpost.length}}
+  <div class="col-md-6 project-list">
+    <h3>Current Projects:</h3>
 
-    {{blogpost.title}}.
-
-  </p>
+    {{#each blogpost as |blogpost|}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h4><a href="/blogpost/{{blogpost.id}}">{{blogpost.title}}</a></h4>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-sm btn-danger delete" post-id="{{blogpost.id}}">DELETE</button>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
 </div>
-<div>
-  <p>
-    {{blogpost.description}}
-    <!-- guest_name will eventually go here -->
-  </p>
-  <p>
-    {{format_date blogpost.date_created}}
-    <!-- guest_name will eventually go here -->
-  </p>
-
-</div>
-<!-- Below, we close the #each helper. -->
-<div class =>
-  <button type="delete" class="btn btn-danger mb-2 " post_id='{{ blogpost.blogpost_id}}'>Delete</button>
-</div>
-
-
-{{/each}}
 
 <script src="./js/addpost.js"></script>

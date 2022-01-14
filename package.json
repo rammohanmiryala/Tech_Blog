@@ -19,7 +19,8 @@
     "express-handlebars": "^5.3.5",
     "express-session": "^1.17.2",
     "mysql2": "^2.3.3",
-    "sequelize": "^6.12.4"
+    "sequelize": "^6.12.4",
+    "sweetalert": "^2.1.2"
   },
   "devDependencies": {
     "eslint": "^7.12.1",
