@@ -11,22 +11,49 @@
   <button type="submit" class="btn btn-primary mb-2">Submit</button>
 </form>
 
-  {{#if blogpost.length}}
-  <div class="col-md-6 currentposts-list">
-    <h3>Current Projects:</h3>
-
-    {{#each blogpost as |blogpost|}}
-    <div class="row mb-2">
-      <div class="col-md-8">
-        <h4><a href="/blogpost/{{blogpost.id}}">{{blogpost.title}}</a></h4>
+{{#each blogposts as |blogpost|}}
+<div class="container">
+  <a href="/blogpost/{{blogpost.id}}">
+    <div class="row blogpost">
+      <div class=" col title ">
+        {{blogpost.title}}
       </div>
-      <div class="col-md-4">
-        <button class="btn btn-sm btn-danger delete" post-id="{{blogpost.id}}">DELETE</button>
+      <div class=" col-lg-6 title ">
+      </div>
+      <div class=" col justify-content-end title">
+        {{ format_date blogpost.date_created}}
+        {{blogpost.user.fullname}}
+      </div>
+      <div class="col-12 description">
+        {{blogpost.description}}
       </div>
     </div>
-    {{/each}}
+  </a>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Example textarea</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
   </div>
-  {{/if}}
+  <button type="submit" class="btn btn-primary mb-2">Submit</button>
+</div>
+{{/each}}
+
+
+{{#if blogpost.length}}
+<div class="col-md-6 currentposts-list">
+  <h3>Current Projects:</h3>
+  {{#each blogpost as |blogpost|}}
+  <div class="row mb-2">
+    <div class="col-md-8">
+      {{blogpost.title}}
+      <h4><a href="/blogpost/{{blogpost.id}}">{{blogpost.title}}</a></h4>
+    </div>
+    <div class="col-md-4">
+      <button class="btn btn-sm btn-danger delete" post-id="{{blogpost.id}}">DELETE</button>
+    </div>
+  </div>
+  {{/each}}
+</div>
+{{/if}}
 </div>
 
 <script src="./js/addpost.js"></script>

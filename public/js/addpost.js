@@ -13,16 +13,15 @@ const newFormHandler = async (event) => {
         title,
         description,
       }),
-
+      
 
       headers: {
         'Content-Type': 'application/json',
       },
-
     });
     console.log(response);
     if (response.ok) {
-      document.location.replace('/');
+      document.location.replace('/dashboard');
     } else {
       alert('Failed to add post');
     }
@@ -52,4 +51,4 @@ document
 
 document
   .querySelector('.currentposts-list')
-  .addEventListener('.delete', delButtonHandler);
+  .addEventListener('click', delButtonHandler);

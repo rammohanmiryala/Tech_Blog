@@ -3,7 +3,7 @@ const { Blogpost } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // route to create/add a Blogpost using async/await (add later withAuth)
-router.post('/dashboard',withAuth, async (req, res) => {
+router.post('/',withAuth, async (req, res) => {
   try { 
     const blogpostData = await Blogpost.create({
     title: req.body.title,
