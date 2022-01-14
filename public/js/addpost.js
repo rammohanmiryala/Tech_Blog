@@ -32,7 +32,7 @@ const newFormHandler = async (event) => {
 const delButtonHandler = async (event) => {
   
   if (event.target.hasAttribute('post_id')) {
-    const review_id = event.target.getAttribute('post_id');
+    const blogpost_id = event.target.getAttribute('post_id');
     const response = await fetch(`/api/blogpost/${blogpost_id}`, {
       
       method: 'DELETE',
@@ -51,5 +51,5 @@ document
   .addEventListener('submit', newFormHandler);
 
 document
-  .querySelector('.currentposts')
-  .addEventListener('delete', delButtonHandler);
+  .querySelector('.currentposts-list')
+  .addEventListener('.delete', delButtonHandler);
