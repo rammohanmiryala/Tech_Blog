@@ -1,19 +1,24 @@
 <h1>dashboard</h1>
-<form class="new-post-form">
-  <div class="form-group">
-    <label for="exampleInputtextarea1">Title</label>
-    <input type="text" class="form-control" id="title" placeholder="mvc">
+<div class="container style">
+  <button type="submit" class="btn postbutton" onclick="showtextbox()">+Newpost</button>
+  <div>
+    <form class="container new-post-form" id="hidediv" style="display:none;">
+      <div class="form-group">
+        <label for="exampleInputtextarea1">Title</label>
+        <input type="text" class="form-control" id="title" placeholder="mvc">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputtextarea2">content</label>
+        <textarea class="form-control" id="description" rows="3"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary mb-2">Submit</button>
+    </form>
   </div>
-  <div class="form-group">
-    <label for="exampleInputtextarea2">content</label>
-    <textarea class="form-control" id="description" rows="3"></textarea>
-  </div>
-  <button type="submit" class="btn btn-primary mb-2">Submit</button>
-</form>
-
-{{#each blogposts as |blogpost|}}
+</div>
+{{!-- /blogpost/{{blogpost.id}} --}}
 <div class="container">
-  <a href="/blogpost/{{blogpost.id}}">
+  {{#each blogposts as |blogpost|}}
+  <a href="" onclick="posttextbox()">
     <div class="row blogpost">
       <div class=" col title ">
         {{blogpost.title}}
@@ -29,16 +34,23 @@
       </div>
     </div>
   </a>
-  <div class="form-group">
-    <label for="exampleFormControlTextarea1">Example textarea</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  <div class="form-group" id="textdiv" style="display:none;">
+    <div>
+      <label for="exampleFormControlTextarea1"></label>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-sm updatebutton">Update</button>
+      <button class="btn btn-sm btn-danger" post-id="{{blogpost.id}}">DELETE</button>
+    </div>
   </div>
-  <button type="submit" class="btn btn-primary mb-2">Submit</button>
+  {{/each}}
+
 </div>
-{{/each}}
 
 
-{{#if blogpost.length}}
+
+{{!-- {{#if blogpost.length}}
 <div class="col-md-6 currentposts-list">
   <h3>Current Projects:</h3>
   {{#each blogpost as |blogpost|}}
@@ -48,12 +60,13 @@
       <h4><a href="/blogpost/{{blogpost.id}}">{{blogpost.title}}</a></h4>
     </div>
     <div class="col-md-4">
-      <button class="btn btn-sm btn-danger delete" post-id="{{blogpost.id}}">DELETE</button>
+      <button class="btn btn-sm btn-danger" post-id="{{blogpost.id}}">DELETE</button>
     </div>
   </div>
   {{/each}}
 </div>
 {{/if}}
-</div>
+</div> --}}
 
 <script src="./js/addpost.js"></script>
+<script src="./js/showtextbox.js"></script>

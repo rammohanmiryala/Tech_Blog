@@ -14,7 +14,6 @@ const signupFormHandler = async (event) => {
 
     if (response.ok) {
       document.location.replace('/dashboard');
-      swal("Account created!", "You clicked the button!", "success");
       swal({
         title: "Account created!",
         text: "You clicked the button!",

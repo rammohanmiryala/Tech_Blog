@@ -30,4 +30,14 @@ header, .project:not(:last-child) {
 }
 .blogpost{
   margin-bottom :2em;
+  margin-top :2em;
+}
+.updatebutton{
+  background-color:rgb(133, 158, 160);
+
+}
+.postbutton{
+  background-color:rgb(8, 233, 158);
+  color:black;
+
 }
