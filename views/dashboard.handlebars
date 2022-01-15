@@ -19,7 +19,7 @@
 <div class="container">
   {{#each blogposts as |blogpost| }}
  
-  <div href="" onclick="posttextbox()" style="cursor:pointer;">
+  <div href="" onclick="posttextbox({{blogpost.id}})" style="cursor:pointer;">
     <div class="row blogpost">
       <div class=" col title ">
         {{blogpost.title}}
