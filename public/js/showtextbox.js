@@ -8,7 +8,7 @@ function showtextbox() {
   }
 }
 function posttextbox() {
-  var x = document.querySelector("#textdiv");
+  var x = document.querySelector("#text${blogpost}");
   if (x.style.display === "none") {
     x.style.display = "block";
   } else {
