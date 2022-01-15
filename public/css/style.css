@@ -29,7 +29,7 @@ header, .project:not(:last-child) {
   background-color:bisque
 }
 .blogpost{
-  margin-bottom :2em;
+  margin-bottom :0.5em;
   margin-top :2em;
 }
 .updatebutton{
@@ -40,4 +40,7 @@ header, .project:not(:last-child) {
   background-color:rgb(8, 233, 158);
   color:black;
 
+}
+.buttonmargin{
+  margin-top :2em;
 }

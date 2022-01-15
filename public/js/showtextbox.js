@@ -7,8 +7,16 @@ function showtextbox() {
     x.style.display = "none";
   }
 }
-function posttextbox() {
-  var x = document.querySelector("#text${blogpost}");
+function posttextbox(blogpost) {
+  var x = document.querySelector(`#text${blogpost}`);
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+function hometextbox(blogpost) {
+  var x = document.querySelector(`#hometext${blogpost}`);
   if (x.style.display === "none") {
     x.style.display = "block";
   } else {
