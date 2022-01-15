@@ -7,10 +7,12 @@ const newCommentHandler = async (event) => {
 
     if (description) {
 
-        const response = await fetch(`/api/blogpost/${blogpost_id}`, {
+        const response = await fetch(`/api/blogpost/${id}`, {
             method: 'POST',
             body: JSON.stringify({
                 description,
+                user_id: req.session.user_id
+
 
             }),
 
@@ -27,27 +29,6 @@ const newCommentHandler = async (event) => {
     }
 }
 
-// const delButtonHandler = async (event) => {
-
-//     if (event.target.hasAttribute('post_id')) {
-//         const blogpost_id = event.target.getAttribute('post_id');
-//         const response = await fetch(`/api/blogpost/${blogpost_id}`, {
-
-//             method: 'DELETE',
-//         });
-//         console.log("response")
-//         if (response.ok) {
-//             document.location.replace('/dashboard');
-//         } else {
-//             alert('Failed to delete review');
-//         }
-//     }
-// };
-
 document
-    .querySelector('.form-group')
-    .addEventListener('click', newCommentHandler);
-
-// document
-//     .querySelector('.currentposts-list')
-//     .addEventListener('click', delButtonHandler);
+    .querySelector('.textareacomment')
+    .addEventListener('submit', newCommentHandler);
