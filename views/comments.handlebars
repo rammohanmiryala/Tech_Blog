@@ -1,31 +1,36 @@
 {{> nav}}
 
 <div class="container">
-<h1>comments page</h1>
-<h2>Title : {{title}}</h2>
-<h5>Description : {{description}}</h5>
-
-<form class="mb-3">
-    <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-    <button type="button" class="btn btn-info mt-2"> comment</button>
-</form>
-
-{{#if Comments.length}}
-  <div class="col-md-6 comments-list">
-      <h4>comments for the post</h4>
-    {{#each Comments as |Comments|}}
-    <div class="row mb-2">
-      <div class="col-md-8">
-        <p>{{description}}</p>
-        <p>{{user.fullname}}</p>
-      </div>
-      <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{Comments.id}}">DELETE</button>
-      </div>
-    </div>
-    {{/each}}
+  <div>
+    <h1>comments page</h1>
+    <h2 class="title">Title : {{title}}</h2>
+    <h5>Description : {{description}}</h5>
   </div>
-  {{/if}}
+  <div>
+    <form class="form-group mb-3 ">
+      <label for="exampleFormControlTextarea1" class="form-label mt-5">Add your comment</label>
+      <textarea class="form-control" id="commenttext" rows="3"></textarea>
+      <button type="submit" class="btn btn-info mt-2" value="{{id}}"> comment</button>
+    </form>
+  </div>
+  <div>
+    {{#if Comments.length}}
+    <div class="col-md-6 comments-list">
+      <h4>comments for the post</h4>
+      {{#each Comments as |Comments|}}
+      <div class="row mb-2">
+        <div class="col-md-8">
+          <p>{{description}}</p>
+          <p>{{user.fullname}}</p>
+        </div>
+        <div class="col-md-4">
+          <button class="btn btn-sm btn-danger" data-id="{{Comments.id}}">DELETE</button>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+    {{/if}}
+  </div>
 </div>
-</div>
+
+<script src="/js/addcomment.js"></script>
