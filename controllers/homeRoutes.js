@@ -32,21 +32,24 @@ router.get('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
-router.get('/blogpost/:id',withAuth, async (req, res) => {
+router.get('/blogpost/:id', withAuth, async (req, res) => {
   try {
     const blogpostData = await Blogpost.findByPk(req.params.id, {
       include: [{
           model: User,
-        }     
-      ],
+        }, {
+          model: Comments
+        }
 
-      include:[{
-        model: Comments}],
+
+      ]
     });
 
-    const blogposts = blogpostData.get({ plain: true });
+    const blogposts = blogpostData.get({
+      plain: true
+    });
 
-    res.render('comments',{
+    res.render('comments', {
       ...blogposts,
       logged_in: req.session.logged_in,
     });
@@ -62,7 +65,9 @@ router.get('/dashboard', withAuth, async (req, res) => {
     // Get all projects and JOIN with user data
     const blogpostData = await Blogpost.findAll({
 
-      include: [{model: User}],
+      include: [{
+        model: User
+      }],
       where: {
         user_id: req.session.user_id
       }
