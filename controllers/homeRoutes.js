@@ -32,55 +32,28 @@ router.get('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
-
-// router.get('/blogpost/:id', async (req, res) => {
-//   try {
-//     const blogpostData = await Blogpost.findByPk(req.params.id, {
-//       include: [
-//         {
-//           model: User,
-//           // attributes: ['fullname'],
-//         },
-//       ],
-//     });
-
-//     const blogpost = blogpostData.get({ plain: true });
-
-//     res.render('blogpost', {
-//       ...blogpost,
-//       logged_in: req.session.logged_in
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
-
-router.get('/blogpost/:id', async (req, res) => {
+router.get('/blogpost/:id',withAuth, async (req, res) => {
   try {
     const blogpostData = await Blogpost.findByPk(req.params.id, {
       include: [{
           model: User,
-        },
-        {
-          model: Comments
-        }
+        }     
       ],
+
+      include:[{
+        model: Comments}],
     });
 
     const blogposts = blogpostData.get({ plain: true });
 
-    res.render('homepage', {
-      blogposts,
-      logged_in: req.session.logged_in
+    res.render('comments',{
+      ...blogposts,
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);
   }
 });
-
-
-
-
 
 
 // Use withAuth middleware to prevent access to route
@@ -89,13 +62,10 @@ router.get('/dashboard', withAuth, async (req, res) => {
     // Get all projects and JOIN with user data
     const blogpostData = await Blogpost.findAll({
 
-      include: [{
-        model: User,
-      }, ],
+      include: [{model: User}],
       where: {
         user_id: req.session.user_id
       }
-
 
     });
 

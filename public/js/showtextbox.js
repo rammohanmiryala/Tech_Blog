@@ -23,4 +23,8 @@ function hometextbox(blogpost) {
     x.style.display = "none";
   }
 }
+function commentpage(){
+  location.replace(`/blogpost/${blogpost.id}`)
+
+}
 

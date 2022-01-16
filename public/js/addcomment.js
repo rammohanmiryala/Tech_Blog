@@ -1,28 +1,22 @@
 const newCommentHandler = async (event) => {
     event.preventDefault();
-
-
     const description = document.querySelector('#description').value;
-
-
+    const post_id = event.target.dataset.attr
+    
     if (description) {
-
-        const response = await fetch(`/api/blogpost/${id}`, {
+        const response = await fetch(`/api/comment`, {
             method: 'POST',
             body: JSON.stringify({
                 description,
-                user_id: req.session.user_id
-
-
+                post_id,
             }),
-
             headers: {
                 'Content-Type': 'application/json',
             },
         });
         console.log(response);
         if (response.ok) {
-            document.location.replace('homepage');
+            document.location.relode();
         } else {
             alert('Failed to add comment');
         }
@@ -30,5 +24,5 @@ const newCommentHandler = async (event) => {
 }
 
 document
-    .querySelector('.textareacomment')
+    .querySelector('.new_comment')
     .addEventListener('submit', newCommentHandler);

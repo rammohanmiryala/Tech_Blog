@@ -1,0 +1,58 @@
+<h1>comments page</h1>
+<h2>Title : {{title}}</h2>
+<h5>Description : {{description}}</h5>
+
+
+<form class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    <button type="button" class="btn btn-info mt-2 "> comment</button>
+</form>
+
+
+  {{#if comments.length}}
+  <div class="col-md-6 comments-list">
+      <h1>comments for the post</h1>
+    {{#each comments as |comment|}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h4>{{comments.description}}</h4>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-sm btn-danger" data-id="{{comments.id}}">DELETE</button>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
+</div>
+
+
+
+{{#each comment as |comment| }}
+<div class="row mb-4 project">
+    <div class="col-md-5">
+        <p>
+            <!-- Call helper function with triple brackets to render the emoji span as HTML -->
+            {{comments.description}}
+            {{comments.user_id}}
+        </p>
+    </div>
+</div>
+{{/each}}
+
+{{!-- {{#if comments.length}}
+{{#each comments as |comment|}}
+<div class="col d-flex justify-content-center mb-2">
+    <div class="card w-50 text-white bg-secondary border-light">
+        <div class="card-body">
+            <blockquote class="blockquote mb-0 text-center">
+                <p>{{comment.description}}</p>
+                <footer class="blockquote-footer text-white m-0">{{user.name}} <cite title="Source Title">{{format_date
+                        date_created}}</cite></footer>
+            </blockquote>
+        </div>
+    </div>
+</div>
+{{/each}}
+{{/if}} --}}
