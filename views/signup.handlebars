@@ -1,4 +1,30 @@
-<div class="row">
+{{> nav}}
+
+<div class="container col-md-3  logindiv">
+  <div class="d-flex align-items-center">
+   <form class="form signup-form">
+      <div class="form-group">
+        <h2>Signup</h2>
+        <label for="fullname-signup" >fullname:</label>
+        <input class="form-input" type="text" id="fullname-signup" />
+      </div>
+      <div class="form-group">
+        <label for="email-signup">email:</label>
+        <input class="form-input" type="text" id="email-signup" />
+      </div>
+      <div class="form-group">
+        <label for="password-signup">password:</label>
+        <input class="form-input" type="password" id="password-signup" />
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit">signup</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+{{!-- <div class="container row d-flex justify-content-center ">
   <div class="col-md-6">
     <h2>Signup</h2>
     <form class="form signup-form">
@@ -19,7 +45,7 @@
       </div>
     </form>
   </div>
-</div>
+</div> --}}
 
 
 <script src="./js/signup.js"></script>

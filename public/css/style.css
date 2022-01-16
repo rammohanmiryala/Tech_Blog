@@ -1,3 +1,8 @@
+@import "~bootswatch/dist/slate/variables";
+@import "~bootstrap/scss/bootstrap";
+@import "~bootswatch/dist/slate/bootswatch";
+
+
 header, .project:not(:last-child) {
   border-bottom: 1px solid #ccc;
 }
@@ -43,4 +48,11 @@ header, .project:not(:last-child) {
 }
 .buttonmargin{
   margin-top :2em;
+}
+
+
+.logindiv{
+  margin-top:5%;
+
+
 }

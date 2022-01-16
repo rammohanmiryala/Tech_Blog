@@ -1,17 +1,18 @@
-<h1>blogpots ram</h1>
+{{> nav}}
+
 <div class="container">
+  <h1>blogpots ram</h1>
   <div style="cursor:pointer;">
     {{#each blogposts as |blogpost|}}
-      <div class="row blogpost" onclick="commentpage({{blogpost.id}})" id ="hometext{{blogpost.id}}" >
+      <div class="row blogpost" onclick="commentpage({{blogpost.id}})" id ="hometext{{blogpost.id}}">
         <div class="col-lg title">
-          <a href="/blogpost/{{blogpost.id}}">{{blogpost.title}}</a>
-          
+          <a href="/blogpost/{{blogpost.id}}">{{blogpost.title}}</a>          
         </div>
         <div class="col-lg-7 title">
         </div>
         <div class="col-lg title">
           {{ format_date blogpost.date_created}}
-          {{blogpost.user.fullname}}
+          
         </div>
         <div class="col-lg-12 description">
           {{blogpost.description}}
