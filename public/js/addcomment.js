@@ -1,9 +1,14 @@
 const newCommentHandler = async (event) => {
     event.preventDefault();
-    const description = document.querySelector('#commenttext').value;
+    const description = document.querySelector('#commenttext').value.trim();
+    const post_id = document.querySelector('#commentpost').value.trim();
+    
+
+    // console.log(post_id)
+    // console.log(description)
 
     if (description) {
-        const response = await fetch(`/api/comment`, {
+        const response = await fetch(`/api/comments`, {
             method: 'POST',
             body: JSON.stringify({
                 description,
@@ -15,7 +20,7 @@ const newCommentHandler = async (event) => {
         });
         console.log(response);
         if (response.ok) {
-            document.location.relode();
+            document.location.replace(`/blogpost/${post_id}`);
         } else {
             alert('Failed to add comment');
         }
