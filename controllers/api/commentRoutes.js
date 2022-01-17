@@ -4,13 +4,16 @@ const withAuth = require('../../utils/auth');
 
 // route to create/add a Blogpost using async/await (add later withAuth)
 router.post('/',withAuth, async (req, res) => {
+
   try { 
+    console.log(req.body)
     const CommentsData = await Comments.create({...req.body,
       user_id: req.session.user_id,
     });
   // if the Blogpost is successfully created, the new response will be returned as json
   res.status(200).json(CommentsData)
 } catch (err) {
+  console.log('this is the error', err)
   res.status(400).json(err);
 }
 });
