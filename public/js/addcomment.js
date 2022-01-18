@@ -31,8 +31,6 @@ const newCommentHandler = async (event) => {
 const delButtonHandler = async (event) => {
     if (event.target.hasAttribute('data-id')) {
       const comment_id = event.target.getAttribute('data-id');
-
-      
   
       const response = await fetch(`/api/comments/${comment_id}`, {
         method: 'DELETE',
@@ -41,9 +39,9 @@ const delButtonHandler = async (event) => {
 
   console.log(response)
       if (response.ok) {
-        document.location.replace(`/`);
+        document.location.reload();
       } else {
-        alert('Failed to delete project');
+        alert('Failed to delete comment');
       }
     }
   };
