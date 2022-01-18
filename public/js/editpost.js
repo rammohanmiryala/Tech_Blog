@@ -3,12 +3,16 @@ const newFormHandler = async (event) => {
 
   const title = document.querySelector('#title').value;
   const description = document.querySelector('#description').value;
+  const updatepost_id = document.querySelector('#updatepost').value.trim();
 
+  console.log(title)
+  console.log(description,)
+  console.log(updatepost_id,)
 
   if (title && description) {
 
-    const response = await fetch(`/api/dashboard`, {
-      method: 'POST',
+    const response = await fetch(`/api/blogpost/edit/${updatepost_id}`, {
+      method: 'PUT',
       body: JSON.stringify({
         title,
         description,
@@ -19,36 +23,37 @@ const newFormHandler = async (event) => {
         'Content-Type': 'application/json',
       },
     });
+
     console.log(response);
     if (response.ok) {
       document.location.replace('/dashboard');
     } else {
-      alert('Failed to add post');
+      alert('Failed to update blogpost');
     }
   }
 }
 
-const delButtonHandler = async (event) => {
+// const delButtonHandler = async (event) => {
   
-  if (event.target.hasAttribute('post_id')) {
-    const blogpost_id = event.target.getAttribute('post_id');
-    const response = await fetch(`/api/blogpost/${blogpost_id}`, {
+//   if (event.target.hasAttribute('data-id')) {
+//     const blogpost_id = event.target.getAttribute('data-id');
+//     const response = await fetch(`/api/blogpost/${blogpost_id}`, {
       
-      method: 'DELETE',
-    });
-    console.log("response")
-    if (response.ok) {
-      document.location.replace('/dashboard');
-    } else {
-      alert('Failed to delete review');
-    }
-  }
-};
+//       method: 'DELETE',
+//     });
+//     console.log("response")
+//     if (response.ok) {
+//       document.location.replace('/dashboard');
+//     } else {
+//       alert('Failed to delete review');
+//     }
+//   }
+// };
 
 document
   .querySelector('.new-post-form')
   .addEventListener('submit', newFormHandler);
 
-document
-  .querySelector('.currentposts-list')
-  .addEventListener('click', delButtonHandler);
+// document
+//   .querySelector('.new-post-form')
+//   .addEventListener('click', delButtonHandler);
