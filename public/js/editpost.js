@@ -59,7 +59,7 @@
 
 const postId = document.querySelector('input[name="post-id"]').value;
 console.log("testing");
-console.log("my post iid is" ,postId);
+console.log("my post id is" ,postId);
 
 // const id = window.location.toString().split('/')[
 //   window.location.toString().split('/').length - 1
@@ -76,7 +76,7 @@ const editFormHandler = async (event) => {
   console.log(postId);
   
 
-  const response = await fetch(`/api/post/${postId}`, {
+  const response = await fetch(`/api/blogpost/${postId}`, {
     method: 'PUT',
     body: JSON.stringify({
       postTitle,
@@ -97,7 +97,7 @@ const editFormHandler = async (event) => {
 };
 
 const deleteClickHandler = async () => {
-  await fetch(`/api/post/${postId}`, {
+  await fetch(`/api/blogpost/${postId}`, {
     method: 'DELETE'
   });
 
