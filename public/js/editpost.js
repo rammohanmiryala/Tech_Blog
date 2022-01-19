@@ -1,9 +1,9 @@
 const newFormHandler = async (event) => {
   event.preventDefault();
 
-  const title = document.querySelector('#title').value;
-  const description = document.querySelector('#description').value;
-  const updatepost_id = document.querySelector('#updatepost').value.trim();
+  const title = document.querySelector('#title').value.trim();
+  const description = document.querySelector('#description').value.trim();
+  const updatepost_id = document.querySelector('#updatepost').value;
 
   console.log(title)
   console.log(description,)
@@ -11,7 +11,7 @@ const newFormHandler = async (event) => {
 
   if (title && description) {
 
-    const response = await fetch(`/api/blogpost/edit/${updatepost_id}`, {
+    const response = await fetch(`/dashboard/${updatepost_id}`, {
       method: 'PUT',
       body: JSON.stringify({
         title,

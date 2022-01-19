@@ -19,10 +19,13 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 // UPDATE POST
-router.put('/:id', withAuth, async (req, res) => {
-  try {
-    
-    const updateblogpost = await Blogpost.update(req.body, {
+router.put('blogpost/:id', withAuth, async (req, res) => {
+  try {    
+    const updateblogpost = await Blogpost.update({     
+      title: req.body.title,
+      description: req.body.description,
+      },
+      {
       where: {
         id: req.params.id,
         user_id: req.session.user_id,
