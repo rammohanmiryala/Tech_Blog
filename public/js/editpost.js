@@ -11,7 +11,7 @@ const newFormHandler = async (event) => {
 
   if (title && description) {
 
-    const response = await fetch(`/dashboard/${updatepost_id}`, {
+    const response = await fetch(`/api/dashboard/${updatepost_id}`, {
       method: 'PUT',
       body: JSON.stringify({
         title,
