@@ -16,27 +16,28 @@
     </div>
   </div>
 </div> --}}
-
+{{!-- 
 <div class="container">
   <h1>Update Post</h1>
-  <form class ="new-post-form ">
+  <form id ="new-post-form">
     <div class="form-group">
-      <label for="exampleInputtextarea1">Title</label>
-      <input type="text" class="form-control" id="title" value="{{title}}">
+      <label class="form-label">Title</label>
+      <input type="text" class="form-control" id="title" name="post-title" value="{{title}}">
     </div>
     <div class="form-group">
       <label for="exampleInputtextarea2">content</label>
-      <textarea class="form-control" id="description" rows="3">{{description}}</textarea>
+      <textarea class="form-textarea form-input"  name="post-body" rows="3" data-number="8">{{description}}</textarea>
     </div>
-    <button type="submit" class="btn btn-sm updatebutton bg-light" id="updatepost" value= "{{id}}">UPDATE</button>  
+    <input type="hidden" name="post-id" value="{{id}}"/>
+    <button type="submit" class="btn btn-sm bg-light">UPDATE</button>  
   </form>
   <div>
-  <button type="click" class="btn btn-sm btn-danger mt-5 " data-id="{{id}}">DELETE</button>
+  <button type="click" class="btn btn-sm btn-danger mt-5 " id="delete-btn" data-id="{{id}}">DELETE</button>
   </div>
-</div>
+</div> --}}
 
 
-
+{{!-- name="btnupdate" --}}
 
 {{!-- <div class="container">
   <h1>Dashboard</h1>
@@ -95,4 +96,25 @@
 
 
 <script src="./js/showtextbox.js"></script> --}}
+
+<div class="card">
+  <h2 class="card-header">Edit Post</h2>
+  <form class="card-body" id="edit-post-form">
+      <div>
+      <label class="form-label">Title:</label>
+      <input class="form-input" type="text" name="post-title" value="{{title}}"/>
+    </div>
+    
+    <div>
+      <label class="form-label">Content:</label>
+      <textarea class="form-textarea form-input" name="post-body" data-number="8">{{description}}</textarea>
+    </div>
+ 
+    <button class="btn btn-primary" type="submit">EDIT</button>
+    <input type="hidden" name="post-id" value="{{id}}"/>
+  </form>
+  <div class="card-body">
+   <button class="btn btn-primary" type="click" id="delete-btn">DELETE</button>
+  </div> 
+</div>
 <script src="/js/editpost.js"></script>
